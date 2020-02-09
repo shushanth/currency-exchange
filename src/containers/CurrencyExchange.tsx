@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { apiService } from '../utils/apiUtils';
 import { rootStateI } from '../store/reducers';
-import { CurrencyExchanger, CurrencyExchanged } from '../components';
+import {
+  CurrencyExchanger,
+  CurrencyExchanged,
+  CurrencyInfo,
+} from '../components';
 import { CEModalList } from '../shared/components';
 import {
   fetchCurrenciesRates,
@@ -12,12 +16,13 @@ import {
   changeOfExchangedRates,
   changeOfExchangerCurrency,
   changeOfExchangedCurrency,
+  swapOfCurrency,
 } from '../store/actions';
 import {
   CurrencyExchangeContainerStyled,
   CurrencyExchangedContainerStyled,
   CurrencyExchangerContainerStyled,
-  CurrencyConvertContainerStyled,
+  CurrencyInfoContainerStyled,
 } from './currencyExchange.styled';
 import { CurrencyExchangePropsI } from './currencyExchange.model';
 
@@ -42,6 +47,10 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
 
   const exchangedAmt = useSelector(
     (state: rootStateI) => state.exchangedAmount,
+  );
+
+  const exchangedRealRate = useSelector(
+    (state: rootStateI) => state.exchangedRealRate,
   );
 
   const [displayCurrenciesList, setDisplayCurrenciesList] = useState<boolean>(
@@ -115,6 +124,10 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
     }
   };
 
+  const onCurrenciesSwap = (swapState: Boolean) => {
+    dispatch(swapOfCurrency({ payload: { swappedCurrency: swapState } }));
+  };
+
   return (
     <CurrencyExchangeContainerStyled>
       <CEModalList
@@ -134,6 +147,15 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
         />
       </CurrencyExchangerContainerStyled>
 
+      <CurrencyInfoContainerStyled>
+        <CurrencyInfo
+          exchangerCurrency={exchangerCurrency}
+          exchangedCurrency={exchangedCurrency}
+          exchangedRate={exchangedRealRate}
+          onCurrencySwap={onCurrenciesSwap}
+        />
+      </CurrencyInfoContainerStyled>
+
       <CurrencyExchangedContainerStyled>
         <CurrencyExchanged
           currenciesList={currenciesList}
@@ -143,9 +165,6 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
           onExchangedCurrencyChange={exchangedCurrencyChange}
         />
       </CurrencyExchangedContainerStyled>
-      <CurrencyConvertContainerStyled>
-        <button>Exchange</button>
-      </CurrencyConvertContainerStyled>
     </CurrencyExchangeContainerStyled>
   );
 };

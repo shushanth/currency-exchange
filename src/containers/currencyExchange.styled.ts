@@ -11,12 +11,9 @@ const CurrencyExchangeContainerStyled = styled.div`
   overflow: hidden;
 `;
 
-const CEModalListStyled = styled.div`
-  border: 1px solid #194c7f6b;
-  position: absolute;
+const CurrencyInfoContainerStyled = styled.div`
   width: 100%;
-  height: 100%;
-  background: #194c7f6b;
+  height: 120px;
 `;
 
 // move to seprate component
@@ -31,5 +28,5 @@ export {
   CurrencyConvertStyled,
   CurrencyExchangeContainerStyled,
   CurrencyConvertContainerStyled,
-  CEModalListStyled,
+  CurrencyInfoContainerStyled,
 };
