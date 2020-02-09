@@ -71,14 +71,16 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
         const fetchedCurrencies = dispatch(
           fetchCurrencies({ payload: result }),
         );
-        fetchedCurrencies.payload && associateCurrenciesWithRates();
+        fetchedCurrencies.payload &&
+          associateCurrenciesWithRates(exchangerCurrency);
       },
       onFailure: error => console.log(error),
     });
   };
 
-  const associateCurrenciesWithRates = () => {
+  const associateCurrenciesWithRates = (changedCurrency: string) => {
     apiService.request({
+      baseCurrency: changedCurrency,
       onSuccess: result => dispatch(fetchCurrenciesRates({ payload: result })),
       onFailure: error => console.log(error),
     });
@@ -109,6 +111,7 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
   const invokeCurrencyChange = (changedCurrency: string) => {
     setDisplayCurrenciesList(false);
     if (currencySelectMode === 'EXCHANGER') {
+      associateCurrenciesWithRates(changedCurrency);
       dispatch(
         changeOfExchangerCurrency({
           payload: { updatedCurrency: changedCurrency },
@@ -125,6 +128,7 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
   };
 
   const onCurrenciesSwap = (swapState: Boolean) => {
+    associateCurrenciesWithRates(exchangedCurrency);
     dispatch(swapOfCurrency({ payload: { swappedCurrency: swapState } }));
   };
 
