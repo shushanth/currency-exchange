@@ -74,10 +74,13 @@ const currencyExchangeReducer = (
 
       const updatedCurrencyExchangedRate =
         payload.amount * exchangedCurrencyRate.price;
+      const currencyExchangeAmount = parseFloat(
+        updatedCurrencyExchangedRate.toFixed(2),
+      );
       return {
         ...state,
         exchangerAmount: payload.amount,
-        exchangedAmount: updatedCurrencyExchangedRate,
+        exchangedAmount: currencyExchangeAmount,
       };
 
     case CHANGE_EXCHANGED_RATES:
@@ -92,10 +95,13 @@ const currencyExchangeReducer = (
       const updatedCurrencyExchangerRate =
         (exchangerCurrencyRate.price * payload.amount) /
         exchangedCurrencyPrice.price;
+      const currencyExchangedAmount = parseFloat(
+        updatedCurrencyExchangerRate.toFixed(2),
+      );
       return {
         ...state,
         exchangedAmount: payload.amount,
-        exchangerAmount: updatedCurrencyExchangerRate,
+        exchangerAmount: currencyExchangedAmount,
       };
 
     case CHANGE_EXCHANGER_CURRENCY:
@@ -105,18 +111,26 @@ const currencyExchangeReducer = (
       };
 
     case CHANGE_EXCHANGED_CURRENCY:
+      const changedExchangerAmt = state.currenciesList.filter(
+        (currency: currencyListStateI) => {
+          return currency.name === payload.updatedCurrency;
+        },
+      );
       return {
         ...state,
         exchangedCurrency: payload.updatedCurrency,
+        exchangedRealRate: changedExchangerAmt[0].price,
       };
     case SWAP_CURRENCIES:
       const { exchangedCurrency, exchangerCurrency } = state;
-      const updateExchangerCurrency = exchangedCurrency;
+      const updatedExchangerCurrency = exchangedCurrency;
       const updatedExchangedCurrency = exchangerCurrency;
       return {
         ...state,
         exchangedCurrency: updatedExchangedCurrency,
-        exchangerCurrency: updateExchangerCurrency,
+        exchangerCurrency: updatedExchangerCurrency,
+        exchangedAmount: state.exchangerAmount,
+        exchangerAmount: state.exchangedAmount,
       };
     default:
       return rootInitialState;
