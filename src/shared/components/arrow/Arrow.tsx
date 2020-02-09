@@ -2,8 +2,8 @@
  * @description: Arrow component
  * @propsType ArrowProps
  */
-import React, { FunctionComponent } from 'react';
-import { ArrowProps } from './Arrow.model';
+import React, { FunctionComponent, memo } from 'react';
+import { ArrowPropsI } from './Arrow.model';
 
 import {
   ArrowContainerStyled,
@@ -12,26 +12,22 @@ import {
   ArrowSmallUpStyled,
 } from './arrow.styled';
 
-type size = 'small' | 'medium';
-type mode = 'down' | 'up';
-
-const Arrow: FunctionComponent<ArrowProps> = ({
-  size = 'medium',
-  mode = 'down',
-}): JSX.Element => {
-  return (
-    <ArrowContainerStyled>
-      {size === 'medium' && mode === 'down' && (
-        <ArrowMediumDownStyled></ArrowMediumDownStyled>
-      )}
-      {size === 'small' && mode === 'down' && (
-        <ArrowSmallDownStyled></ArrowSmallDownStyled>
-      )}
-      {size === 'small' && mode === 'up' && (
-        <ArrowSmallUpStyled></ArrowSmallUpStyled>
-      )}
-    </ArrowContainerStyled>
-  );
-};
+const Arrow: FunctionComponent<ArrowPropsI> = memo(
+  ({ size = 'medium', mode = 'down' }): JSX.Element => {
+    return (
+      <ArrowContainerStyled>
+        {size === 'medium' && mode === 'down' && (
+          <ArrowMediumDownStyled></ArrowMediumDownStyled>
+        )}
+        {size === 'small' && mode === 'down' && (
+          <ArrowSmallDownStyled></ArrowSmallDownStyled>
+        )}
+        {size === 'small' && mode === 'up' && (
+          <ArrowSmallUpStyled></ArrowSmallUpStyled>
+        )}
+      </ArrowContainerStyled>
+    );
+  },
+);
 
 export default Arrow;
