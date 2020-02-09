@@ -1,9 +1,21 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
+import './index.css';
+import CurrencyExchange from '../src/containers/CurrencyExchange';
+
+import { currencyExchangeReducer } from '../src/store/reducers';
+
+const store = createStore(currencyExchangeReducer);
 const rootElement = document.getElementById('root');
-const App = (): JSX.Element => <div>hello</div>;
 
-render(<App />, rootElement);
-
-export default App;
+ReactDOM.render(
+  <Fragment>
+    <Provider store={store}>
+      <CurrencyExchange />
+    </Provider>
+  </Fragment>,
+  rootElement
+);

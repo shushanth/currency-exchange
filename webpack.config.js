@@ -15,6 +15,7 @@ module.exports = {
     compress: true,
     contentBase: path.join(__dirname, 'dist'),
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -28,6 +29,10 @@ module.exports = {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },

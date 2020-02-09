@@ -1,0 +1,3 @@
+interface CurrencyExchangePropsI {}
+
+export { CurrencyExchangePropsI };
