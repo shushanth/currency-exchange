@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo } from 'react';
 
 import { CEInput, CEDropdownButton } from '../../shared/components';
 import { ExchangerPropsI } from './currencyExchanger.model';
@@ -8,30 +8,32 @@ import {
   ExchangerAmtContainerStyled,
 } from './currencyExchanger.styled';
 
-const CurrencyExchanger: FunctionComponent<ExchangerPropsI> = ({
-  exchangerCurrency,
-  exchangerAmount,
-  onExchangerCurrencyChange,
-  onExchangerAmountChange,
-}): JSX.Element => {
-  return (
-    <ExchangerContainerStyled>
-      <ExchangerAmtContainerStyled>
-        <CEInput
-          inputType="number"
-          val={exchangerAmount}
-          placeholderText={`${exchangerAmount}`}
-          onInputChange={onExchangerAmountChange}
-        />
-      </ExchangerAmtContainerStyled>
-      <ExchangerCurrencyContainerStyled>
-        <CEDropdownButton
-          selectedLabel={exchangerCurrency}
-          onClick={onExchangerCurrencyChange}
-        />
-      </ExchangerCurrencyContainerStyled>
-    </ExchangerContainerStyled>
-  );
-};
+const CurrencyExchanger: FunctionComponent<ExchangerPropsI> = memo(
+  ({
+    exchangerCurrency,
+    exchangerAmount,
+    onExchangerCurrencyChange,
+    onExchangerAmountChange,
+  }): JSX.Element => {
+    return (
+      <ExchangerContainerStyled>
+        <ExchangerAmtContainerStyled>
+          <CEInput
+            inputType="number"
+            val={exchangerAmount}
+            placeholderText={`${exchangerAmount}`}
+            onInputChange={onExchangerAmountChange}
+          />
+        </ExchangerAmtContainerStyled>
+        <ExchangerCurrencyContainerStyled>
+          <CEDropdownButton
+            selectedLabel={exchangerCurrency}
+            onClick={onExchangerCurrencyChange}
+          />
+        </ExchangerCurrencyContainerStyled>
+      </ExchangerContainerStyled>
+    );
+  },
+);
 
 export default CurrencyExchanger;

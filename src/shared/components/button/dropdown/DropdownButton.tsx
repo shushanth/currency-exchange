@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo } from 'react';
 
 import { CEArrow } from '../../index';
 import { DropdownbuttonPropsI } from './dropdownButton.model';
@@ -8,18 +8,17 @@ import {
   DropdownBtnArrowStyled,
 } from './dropdownButton.styled';
 
-const DropdownButton: FunctionComponent<DropdownbuttonPropsI> = ({
-  onClick,
-  selectedLabel = '',
-}): JSX.Element => {
-  return (
-    <DropdownBtnContainerStyled onClick={() => onClick(selectedLabel)}>
-      <DropdownBtnNameStyled>{selectedLabel}</DropdownBtnNameStyled>
-      <DropdownBtnArrowStyled>
-        <CEArrow size="small" />
-      </DropdownBtnArrowStyled>
-    </DropdownBtnContainerStyled>
-  );
-};
+const DropdownButton: FunctionComponent<DropdownbuttonPropsI> = memo(
+  ({ onClick, selectedLabel = '' }): JSX.Element => {
+    return (
+      <DropdownBtnContainerStyled onClick={() => onClick(selectedLabel)}>
+        <DropdownBtnNameStyled>{selectedLabel}</DropdownBtnNameStyled>
+        <DropdownBtnArrowStyled>
+          <CEArrow size="small" />
+        </DropdownBtnArrowStyled>
+      </DropdownBtnContainerStyled>
+    );
+  },
+);
 
 export default DropdownButton;

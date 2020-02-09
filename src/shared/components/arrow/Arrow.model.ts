@@ -1,6 +1,8 @@
-interface ArrowProps {
-  size?: string;
-  mode?: string;
+type size = 'small' | 'medium';
+type mode = 'down' | 'up';
+interface ArrowPropsI {
+  size?: size;
+  mode?: mode;
 }
 
-export { ArrowProps };
+export { ArrowPropsI };
