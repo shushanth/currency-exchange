@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ExchangedContainerStyled = styled.div`
   display: flex;
-  margin: 20px;
+  margin: 0 20px 20px 20px;
 `;
 
 const ExchangedCurrencyContainerStyled = styled.div`

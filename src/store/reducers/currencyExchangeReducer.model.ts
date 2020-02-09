@@ -8,6 +8,7 @@ interface rootStateI {
   timestamp: string;
   exchangerAmount: number;
   exchangedAmount: number;
+  exchangedRealRate: string;
   exchangerCurrency: string;
   exchangedCurrency: string;
   currenciesList: Array<currencyListStateI>;

@@ -5,6 +5,7 @@ import {
   CHANGE_EXCHANGED_RATES,
   CHANGE_EXCHANGER_CURRENCY,
   CHANGE_EXCHANGED_CURRENCY,
+  SWAP_CURRENCIES,
 } from '../actions/actionTypes';
 import { isArrayEmpty } from '../../utils';
 
@@ -20,6 +21,7 @@ const rootInitialState: rootStateI = {
   exchangedCurrency: 'USD',
   exchangerAmount: 0,
   exchangedAmount: 0,
+  exchangedRealRate: '',
   currenciesList: [],
 };
 
@@ -38,10 +40,16 @@ const currencyExchangeReducer = (
           currency.price = rate;
           return currency;
         });
+      const exchangedUpdatedRealRate = updatedCurrenciesWithPrices.filter(
+        (currency: currencyListStateI) => {
+          return currency.name === state.exchangedCurrency;
+        },
+      );
       return {
         ...state,
         timestamp,
         currenciesList: updatedCurrenciesWithPrices,
+        exchangedRealRate: exchangedUpdatedRealRate[0].price,
       };
 
     case FETCH_CURRENCIES:
@@ -53,6 +61,7 @@ const currencyExchangeReducer = (
           price: '',
         });
       });
+
       return {
         ...state,
         currenciesList: updatedCurrencies,
@@ -65,7 +74,6 @@ const currencyExchangeReducer = (
 
       const updatedCurrencyExchangedRate =
         payload.amount * exchangedCurrencyRate.price;
-
       return {
         ...state,
         exchangerAmount: payload.amount,
@@ -84,7 +92,6 @@ const currencyExchangeReducer = (
       const updatedCurrencyExchangerRate =
         (exchangerCurrencyRate.price * payload.amount) /
         exchangedCurrencyPrice.price;
-      console.log(updatedCurrencyExchangerRate);
       return {
         ...state,
         exchangedAmount: payload.amount,
@@ -101,6 +108,15 @@ const currencyExchangeReducer = (
       return {
         ...state,
         exchangedCurrency: payload.updatedCurrency,
+      };
+    case SWAP_CURRENCIES:
+      const { exchangedCurrency, exchangerCurrency } = state;
+      const updateExchangerCurrency = exchangedCurrency;
+      const updatedExchangedCurrency = exchangerCurrency;
+      return {
+        ...state,
+        exchangedCurrency: updatedExchangedCurrency,
+        exchangerCurrency: updateExchangerCurrency,
       };
     default:
       return rootInitialState;

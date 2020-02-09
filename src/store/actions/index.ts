@@ -5,6 +5,7 @@ import {
   CHANGE_EXCHANGED_RATES,
   CHANGE_EXCHANGER_CURRENCY,
   CHANGE_EXCHANGED_CURRENCY,
+  SWAP_CURRENCIES,
 } from './actionTypes';
 
 export const fetchCurrencies = ({ payload }) => ({
@@ -34,5 +35,10 @@ export const changeOfExchangerCurrency = ({ payload }) => ({
 
 export const changeOfExchangedCurrency = ({ payload }) => ({
   type: CHANGE_EXCHANGED_CURRENCY,
+  payload,
+});
+
+export const swapOfCurrency = ({ payload }) => ({
+  type: SWAP_CURRENCIES,
   payload,
 });
