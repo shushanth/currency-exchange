@@ -17,7 +17,7 @@ const CurrencyInfoStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 25px;
   position: absolute;
   right: 60px;
 

@@ -26,6 +26,8 @@ input {
   background: inherit;
 }
 
+a,
 button {
+  cursor: pointer;
   -webkit-appearance: none;
 }

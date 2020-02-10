@@ -8,7 +8,7 @@ import {
   CurrencyExchanged,
   CurrencyInfo,
 } from '../components';
-import { CEModalList } from '../shared/components';
+import { CEModalList, CEButton } from '../shared/components';
 import {
   fetchCurrenciesRates,
   fetchCurrencies,
@@ -23,6 +23,7 @@ import {
   CurrencyExchangedContainerStyled,
   CurrencyExchangerContainerStyled,
   CurrencyInfoContainerStyled,
+  ExchangeBtnContainerStyled,
 } from './CurrencyExchange.styled';
 import {
   CurrencyExchangeProps,
@@ -166,6 +167,9 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
           onExchangedCurrencyChange={exchangedCurrencyChange}
         />
       </CurrencyExchangedContainerStyled>
+      <ExchangeBtnContainerStyled>
+        <CEButton label="Exchange" level="primary" />
+      </ExchangeBtnContainerStyled>
     </CurrencyExchangeContainerStyled>
   );
 };

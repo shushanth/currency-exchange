@@ -1,5 +1,10 @@
-import React, { FunctionComponent } from 'react';
+type level = 'primary' | 'secondary';
+type size = 'small' | 'medium';
+interface ButtonProps {
+  label: string;
+  level: level;
+  size?: size;
+  onClick?: () => {};
+}
 
-const Button: FunctionComponent = (): JSX.Element => {};
-
-export default Button;
+export { ButtonProps };
