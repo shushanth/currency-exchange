@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { apiService } from '../utils/apiUtils';
+import { POLLING_INTERVAL } from '../utils/';
 import { rootState } from '../store/reducers';
 import {
   CurrencyExchanger,
@@ -62,6 +63,14 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
     requestAvailableCurrencies();
   }, []);
 
+  // TODO: make it custom hook
+  useEffect(() => {
+    const interval = setInterval(() => {
+      associateCurrenciesWithRates(exchangerCurrency);
+    }, POLLING_INTERVAL);
+    return () => clearInterval(interval);
+  }, [exchangerCurrency]);
+
   const requestAvailableCurrencies = () => {
     apiService.request({
       url: 'https://openexchangerates.org/api/currencies.json',
@@ -108,10 +117,13 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
 
   const invokeCurrencyChange = (changedCurrency: string) => {
     setDisplayCurrenciesList(false);
+    if (
+      changedCurrency === exchangedCurrency ||
+      changedCurrency === exchangerCurrency
+    ) {
+      onCurrenciesSwap();
+    }
     if (currencySelectMode === 'EXCHANGER') {
-      if (changedCurrency === exchangedCurrency) {
-        onCurrenciesSwap();
-      }
       associateCurrenciesWithRates(changedCurrency);
       dispatch(
         changeOfExchangerCurrency({
@@ -120,9 +132,6 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
       );
     }
     if (currencySelectMode === 'EXCHANGED') {
-      if (changedCurrency === exchangerCurrency) {
-        onCurrenciesSwap();
-      }
       dispatch(
         changeOfExchangedCurrency({
           payload: { updatedCurrency: changedCurrency },
