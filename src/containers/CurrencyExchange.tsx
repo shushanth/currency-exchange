@@ -109,6 +109,9 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
   const invokeCurrencyChange = (changedCurrency: string) => {
     setDisplayCurrenciesList(false);
     if (currencySelectMode === 'EXCHANGER') {
+      if (changedCurrency === exchangedCurrency) {
+        onCurrenciesSwap();
+      }
       associateCurrenciesWithRates(changedCurrency);
       dispatch(
         changeOfExchangerCurrency({
@@ -117,6 +120,9 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
       );
     }
     if (currencySelectMode === 'EXCHANGED') {
+      if (changedCurrency === exchangerCurrency) {
+        onCurrenciesSwap();
+      }
       dispatch(
         changeOfExchangedCurrency({
           payload: { updatedCurrency: changedCurrency },
