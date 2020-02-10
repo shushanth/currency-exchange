@@ -2,17 +2,17 @@
 
 exports[`<CEModalList /> tree snapshots match 1`] = `
 <div
-  className="sc-fzoLsD drIzan"
+  className="sc-fzplWN eTEdGz"
   id="test-modal"
 >
   <a
-    className="sc-fznyAO gRfKuK"
+    className="sc-fznZeY dKDDpj"
     onClick={[Function]}
   >
     close
   </a>
   <div
-    className="sc-fzpans cSNILj"
+    className="sc-fznyAO hwqMjk"
   />
 </div>
 `;

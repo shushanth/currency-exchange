@@ -2,10 +2,10 @@
 
 exports[`<CEArrow />: snapshots tree snapshots match 1`] = `
 <div
-  className="sc-AxiKw hQHhPG"
+  className="sc-AxiKw dPFsiK"
 >
   <div
-    className="sc-AxhCb fGhDwl"
+    className="sc-AxhCb cPPEUy"
   />
 </div>
 `;

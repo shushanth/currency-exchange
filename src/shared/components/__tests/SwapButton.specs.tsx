@@ -6,12 +6,7 @@ import { CESwapButton } from '../index';
 describe('<CESwapButton />', () => {
   test('tree snapshots match', () => {
     const swapButtonTree = renderer
-      .create(
-        <CESwapButton
-          swapState={false}
-          onSwapInvoke={swapState => swapState}
-        />,
-      )
+      .create(<CESwapButton swapState={false} />)
       .toJSON();
     expect(swapButtonTree).toMatchSnapshot();
   });

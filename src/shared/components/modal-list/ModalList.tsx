@@ -6,7 +6,7 @@ import {
   ModalListItemsContainerStyled,
   ModelListItemStyled,
   ModalCloseStyled,
-} from './modalList.styled';
+} from './ModalList.styled';
 import { uuid } from '../../../utils';
 
 //TODO: Add listItem types

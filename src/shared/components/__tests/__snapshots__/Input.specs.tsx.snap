@@ -5,7 +5,7 @@ exports[`<CEInput /> snapshots tree snapshots match 1`] = `
   className="sc-AxjAm fzHlOB"
 >
   <input
-    className="sc-AxirZ gGQOFK"
+    className="sc-AxirZ drxayQ"
     onChange={[Function]}
     placeholder=""
     type="number"
