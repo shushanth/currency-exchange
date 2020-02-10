@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { apiService } from '../utils/apiUtils';
-import { rootStateI } from '../store/reducers';
+import { rootState } from '../store/reducers';
 import {
   CurrencyExchanger,
   CurrencyExchanged,
@@ -23,41 +23,38 @@ import {
   CurrencyExchangedContainerStyled,
   CurrencyExchangerContainerStyled,
   CurrencyInfoContainerStyled,
-} from './currencyExchange.styled';
-import { CurrencyExchangePropsI } from './currencyExchange.model';
+} from './CurrencyExchange.styled';
+import {
+  CurrencyExchangeProps,
+  currencyExchangeModel,
+} from './CurrencyExchange.model';
 
-type currencyExchangeModelI = 'EXCHANGER' | 'EXCHANGED';
-
-const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Element => {
+const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const currenciesList = useSelector(
-    (state: rootStateI) => state.currenciesList,
+    (state: rootState) => state.currenciesList,
   );
   const exchangerCurrency = useSelector(
-    (state: rootStateI) => state.exchangerCurrency,
+    (state: rootState) => state.exchangerCurrency,
   );
-  const exchangerAmt = useSelector(
-    (state: rootStateI) => state.exchangerAmount,
-  );
+  const exchangerAmt = useSelector((state: rootState) => state.exchangerAmount);
 
   const exchangedCurrency = useSelector(
-    (state: rootStateI) => state.exchangedCurrency,
+    (state: rootState) => state.exchangedCurrency,
   );
 
-  const exchangedAmt = useSelector(
-    (state: rootStateI) => state.exchangedAmount,
-  );
+  const exchangedAmt = useSelector((state: rootState) => state.exchangedAmount);
 
   const exchangedRealRate = useSelector(
-    (state: rootStateI) => state.exchangedRealRate,
+    (state: rootState) => state.exchangedRealRate,
   );
 
   const [displayCurrenciesList, setDisplayCurrenciesList] = useState<boolean>(
     false,
   );
   const [currencySelectMode, setCurrencySelectMode] = useState<
-    currencyExchangeModelI
+    currencyExchangeModel
   >('EXCHANGER');
 
   useEffect(() => {

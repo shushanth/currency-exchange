@@ -1,6 +1,6 @@
-interface DropdownbuttonPropsI {
+interface DropdownbuttonProps {
   onClick: (selectedItem: string) => void;
   selectedLabel?: string;
 }
 
-export { DropdownbuttonPropsI };
+export { DropdownbuttonProps };

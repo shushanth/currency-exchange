@@ -1,14 +1,14 @@
 import React, { FunctionComponent, memo } from 'react';
 
 import { CEArrow } from '../../index';
-import { DropdownbuttonPropsI } from './dropdownButton.model';
+import { DropdownbuttonProps } from './DropdownButton.model';
 import {
   DropdownBtnContainerStyled,
   DropdownBtnNameStyled,
   DropdownBtnArrowStyled,
-} from './dropdownButton.styled';
+} from './DropdownButton.styled';
 
-const DropdownButton: FunctionComponent<DropdownbuttonPropsI> = memo(
+const DropdownButton: FunctionComponent<DropdownbuttonProps> = memo(
   ({ onClick, selectedLabel = '' }): JSX.Element => {
     return (
       <DropdownBtnContainerStyled onClick={() => onClick(selectedLabel)}>

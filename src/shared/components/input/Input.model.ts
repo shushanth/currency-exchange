@@ -1,10 +1,10 @@
 type inputType = 'text' | 'number';
 
-interface InputPropsI {
+interface InputProps {
   val: string | number;
   inputType: inputType;
   onInputChange?: any; //TODO change it to proper type
   placeholderText?: string;
 }
 
-export { InputPropsI };
+export { InputProps };

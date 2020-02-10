@@ -1,4 +1,4 @@
-interface ModelListPropsI {
+interface ModelListProps {
   name: string;
   showModal: boolean;
   listItems?: { name?: string | undefined }[];
@@ -7,4 +7,4 @@ interface ModelListPropsI {
   onItemSelect: (item: string | '') => void;
 }
 
-export { ModelListPropsI };
+export { ModelListProps };

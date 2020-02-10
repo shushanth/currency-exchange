@@ -10,12 +10,12 @@ import {
 import { reducerHelpers } from './helpers';
 
 import {
-  rootStateI,
-  rootActionI,
-  currencyListStateI,
+  rootState,
+  rootAction,
+  currencyListState,
 } from './currencyExchangeReducer.model';
 
-const rootInitialState: rootStateI = {
+const rootInitialState: rootState = {
   timestamp: '',
   exchangerCurrency: 'EUR',
   exchangedCurrency: 'USD',
@@ -27,8 +27,8 @@ const rootInitialState: rootStateI = {
 
 const currencyExchangeReducer = (
   state = rootInitialState,
-  { type, payload }: rootActionI,
-): rootStateI => {
+  { type, payload }: rootAction,
+): rootState => {
   switch (type) {
     case FETCH_CURRENCIES_RATES:
       const { timestamp, rates } = payload;
@@ -49,7 +49,7 @@ const currencyExchangeReducer = (
       };
 
     case FETCH_CURRENCIES:
-      let updatedCurrencies: Array<currencyListStateI> = reducerHelpers.initiateCurrencies(
+      let updatedCurrencies: Array<currencyListState> = reducerHelpers.initiateCurrencies(
         payload,
       );
       return {
@@ -89,7 +89,7 @@ const currencyExchangeReducer = (
 
     case CHANGE_EXCHANGED_CURRENCY:
       const changedExchangerAmt = state.currenciesList.filter(
-        (currency: currencyListStateI) => {
+        (currency: currencyListState) => {
           return currency.name === payload.updatedCurrency;
         },
       );

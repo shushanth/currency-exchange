@@ -1,13 +1,13 @@
 /*
  * @description: Functional component, which abstracts input
- * @propsType InputPropsI
+ * @propsType InputProps
  */
 import React, { FunctionComponent, ChangeEvent, memo } from 'react';
 
-import { InputElementStyled, InputContainerStyled } from './input.styled';
-import { InputPropsI } from './Input.model';
+import { InputElementStyled, InputContainerStyled } from './Input.styled';
+import { InputProps } from './Input.model';
 
-const Input: FunctionComponent<InputPropsI> = memo(
+const Input: FunctionComponent<InputProps> = memo(
   ({
     val,
     onInputChange,

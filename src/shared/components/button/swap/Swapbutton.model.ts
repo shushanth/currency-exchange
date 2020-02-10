@@ -1,6 +1,6 @@
-interface SwapbuttonPropsI {
+interface SwapbuttonProps {
   onSwapInvoke?: (swapState: boolean) => void;
   swapState?: boolean;
 }
 
-export { SwapbuttonPropsI };
+export { SwapbuttonProps };
