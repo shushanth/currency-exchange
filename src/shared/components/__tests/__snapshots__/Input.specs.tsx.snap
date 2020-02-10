@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CEInput /> snapshots tree snapshots match 1`] = `
+<div
+  className="sc-AxjAm fzHlOB"
+>
+  <input
+    className="sc-AxirZ gGQOFK"
+    onChange={[Function]}
+    placeholder=""
+    type="number"
+    value={1}
+  />
+</div>
+`;

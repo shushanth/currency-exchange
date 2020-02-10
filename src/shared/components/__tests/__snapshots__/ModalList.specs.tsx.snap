@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CEModalList /> tree snapshots match 1`] = `
+<div
+  className="sc-fzoLsD drIzan"
+  id="test-modal"
+>
+  <a
+    className="sc-fznyAO gRfKuK"
+    onClick={[Function]}
+  >
+    close
+  </a>
+  <div
+    className="sc-fzpans cSNILj"
+  />
+</div>
+`;

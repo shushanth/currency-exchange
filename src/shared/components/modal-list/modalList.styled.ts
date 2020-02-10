@@ -36,7 +36,7 @@ const ModelListItemStyled = styled.p`
     background: #fffafa6e;
   }
 
-  .sublabel {
+  .sub-label {
     padding-left: 5px;
     font-size: 13px;
   }

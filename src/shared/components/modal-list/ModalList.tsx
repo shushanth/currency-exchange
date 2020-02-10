@@ -27,7 +27,7 @@ const ModalList: FunctionComponent<ModelListPropsI> = memo(
               onClick={() => onItemSelect(item.name)}
               key={uuid()}
             >
-              {item.name} <span className="sublabel">{item.fullName}</span>
+              {item.name} <span className="sub-label">{item.fullName}</span>
             </ModelListItemStyled>
           ))}
         </ModalListItemsContainerStyled>

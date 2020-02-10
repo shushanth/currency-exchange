@@ -17,5 +17,5 @@ ReactDOM.render(
       <CurrencyExchange />
     </Provider>
   </Fragment>,
-  rootElement
+  rootElement,
 );

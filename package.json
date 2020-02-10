@@ -8,7 +8,8 @@
     "build": "webpack --mode=production",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:debug": "jest --debug"
   },
   "author": "shushanth",
   "license": "MIT",
@@ -35,6 +36,8 @@
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/react-test-renderer": "^16.9.2",
+    "@types/styled-components": "^4.4.2",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
     "babel-loader": "^8.0.6",

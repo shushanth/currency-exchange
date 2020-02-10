@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CESwapButton /> tree snapshots match 1`] = `
+<button
+  className="sc-fzozJi gITqmo"
+  onClick={[Function]}
+>
+  <div>
+    ↓
+  </div>
+  <div>
+    ↑
+  </div>
+</button>
+`;
