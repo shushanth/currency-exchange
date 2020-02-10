@@ -7,7 +7,7 @@ import {
   CHANGE_EXCHANGED_CURRENCY,
   SWAP_CURRENCIES,
 } from '../actions/actionTypes';
-import { isArrayEmpty } from '../../utils';
+import { reducerHelpers } from './helpers';
 
 import {
   rootStateI,
@@ -33,70 +33,47 @@ const currencyExchangeReducer = (
     case FETCH_CURRENCIES_RATES:
       const { timestamp, rates } = payload;
       const { currenciesList } = state;
-      const updatedCurrenciesWithPrices: any =
-        !isArrayEmpty(currenciesList) &&
-        currenciesList.map((currency: currencyListStateI) => {
-          const rate = Number(rates[currency.name]).toFixed(2);
-          currency.price = rate;
-          return currency;
-        });
-      const exchangedUpdatedRealRate = updatedCurrenciesWithPrices.filter(
-        (currency: currencyListStateI) => {
-          return currency.name === state.exchangedCurrency;
-        },
+      const updatedCurrenciesWithPrices = reducerHelpers.mapCurrenciesWithPrice(
+        currenciesList,
+        rates,
+      );
+      const exchangedUpdatedRealRate = reducerHelpers.getRealCurrencyPrice(
+        updatedCurrenciesWithPrices,
+        state.exchangedCurrency,
       );
       return {
         ...state,
         timestamp,
         currenciesList: updatedCurrenciesWithPrices,
-        exchangedRealRate: exchangedUpdatedRealRate[0].price,
+        exchangedRealRate: exchangedUpdatedRealRate,
       };
 
     case FETCH_CURRENCIES:
-      let updatedCurrencies: Array<currencyListStateI> = [];
-      Object.keys(payload).map((currencyKey: string) => {
-        updatedCurrencies.push({
-          name: currencyKey,
-          fullName: payload[currencyKey],
-          price: '',
-        });
-      });
-
+      let updatedCurrencies: Array<currencyListStateI> = reducerHelpers.initiateCurrencies(
+        payload,
+      );
       return {
         ...state,
         currenciesList: updatedCurrencies,
       };
     case CHANGE_EXCHANGER_RATES:
-      const exchangedCurrencyRate: any = state.currenciesList.filter(
-        (currency: currencyListStateI) =>
-          currency.name === state.exchangedCurrency,
-      )[0];
-
-      const updatedCurrencyExchangedRate =
-        payload.amount * exchangedCurrencyRate.price;
-      const currencyExchangeAmount = parseFloat(
-        updatedCurrencyExchangedRate.toFixed(2),
+      const exchangedUpdatedCurrencyPrice: number = reducerHelpers.getExchangerPriceWithFormat(
+        state.currenciesList,
+        state.exchangedCurrency,
+        payload.amount,
       );
       return {
         ...state,
         exchangerAmount: payload.amount,
-        exchangedAmount: currencyExchangeAmount,
+        exchangedAmount: exchangedUpdatedCurrencyPrice,
       };
 
     case CHANGE_EXCHANGED_RATES:
-      const exchangerCurrencyRate: any = state.currenciesList.filter(
-        (currency: currencyListStateI) =>
-          currency.name === state.exchangerCurrency,
-      )[0];
-      const exchangedCurrencyPrice: any = state.currenciesList.filter(
-        (currency: currencyListStateI) =>
-          currency.name === state.exchangedCurrency,
-      )[0];
-      const updatedCurrencyExchangerRate =
-        (exchangerCurrencyRate.price * payload.amount) /
-        exchangedCurrencyPrice.price;
-      const currencyExchangedAmount = parseFloat(
-        updatedCurrencyExchangerRate.toFixed(2),
+      const currencyExchangedAmount = reducerHelpers.getExchangedPriceWithFormat(
+        state.currenciesList,
+        state.exchangerCurrency,
+        state.exchangedCurrency,
+        payload.amount,
       );
       return {
         ...state,

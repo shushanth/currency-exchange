@@ -7,7 +7,7 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec(s?)))\\.tsx?$',
+  testRegex: '(/tests/.*|(\\.|/)(test|spec(s?)))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: ['/.next/', './node_modules/'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

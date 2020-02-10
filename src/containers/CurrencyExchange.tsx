@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useCallback,
-} from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { apiService } from '../utils/apiUtils';
@@ -92,13 +87,10 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
   };
 
   const exchangerAmtChange = (exchangerAmt: number) => {
-    useCallback(
-      dispatch(
-        changeOfExchangerRates({
-          payload: { amount: exchangerAmt },
-        }),
-      ),
-      [],
+    dispatch(
+      changeOfExchangerRates({
+        payload: { amount: exchangerAmt },
+      }),
     );
   };
 
@@ -108,10 +100,7 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
   };
 
   const exchangedAmtChange = (exchangedAmt: number) => {
-    useCallback(
-      dispatch(changeOfExchangedRates({ payload: { amount: exchangedAmt } })),
-      [],
-    );
+    dispatch(changeOfExchangedRates({ payload: { amount: exchangedAmt } }));
   };
 
   const exchangedCurrencyChange = () => {
@@ -123,33 +112,24 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangePropsI> = (): JSX.Elem
     setDisplayCurrenciesList(false);
     if (currencySelectMode === 'EXCHANGER') {
       associateCurrenciesWithRates(changedCurrency);
-      useCallback(
-        dispatch(
-          changeOfExchangerCurrency({
-            payload: { updatedCurrency: changedCurrency },
-          }),
-        ),
-        [],
+      dispatch(
+        changeOfExchangerCurrency({
+          payload: { updatedCurrency: changedCurrency },
+        }),
       );
     }
     if (currencySelectMode === 'EXCHANGED') {
-      useCallback(
-        dispatch(
-          changeOfExchangedCurrency({
-            payload: { updatedCurrency: changedCurrency },
-          }),
-        ),
-        [],
+      dispatch(
+        changeOfExchangedCurrency({
+          payload: { updatedCurrency: changedCurrency },
+        }),
       );
     }
   };
 
   const onCurrenciesSwap = (swapState: Boolean) => {
     associateCurrenciesWithRates(exchangedCurrency);
-    useCallback(
-      dispatch(swapOfCurrency({ payload: { swappedCurrency: swapState } })),
-      [],
-    );
+    dispatch(swapOfCurrency({ payload: { swappedCurrency: swapState } }));
   };
 
   return (
