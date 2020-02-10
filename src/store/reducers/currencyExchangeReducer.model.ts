@@ -1,22 +1,22 @@
-interface currencyListStateI {
+interface currencyListState {
   name: string;
   fullName: string;
   price: string;
 }
 
-interface rootStateI {
+interface rootState {
   timestamp: string;
   exchangerAmount: number;
   exchangedAmount: number;
   exchangedRealRate: string;
   exchangerCurrency: string;
   exchangedCurrency: string;
-  currenciesList: Array<currencyListStateI>;
+  currenciesList: Array<currencyListState>;
 }
 
-interface rootActionI {
+interface rootAction {
   type: string;
   payload?: any;
 }
 
-export { rootActionI, rootStateI, currencyListStateI };
+export { rootAction, rootState, currencyListState };

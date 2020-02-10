@@ -1,8 +1,8 @@
-interface ExchangerPropsI {
+interface ExchangerProps {
   currenciesList: any;
   exchangerCurrency: string;
   exchangerAmount: number;
   onExchangerAmountChange: any;
   onExchangerCurrencyChange: any;
 }
-export { ExchangerPropsI };
+export { ExchangerProps };

@@ -5,10 +5,10 @@ import {
   CurrencyExchangeLineStyled,
   CurrencySwapStyled,
   CurrencyInfoStyled,
-} from './currencyInfo.styled';
-import { CurrencyInfoI } from './currencyInfo.model';
+} from './CurrencyInfo.styled';
+import { CurrencyInfoProps } from './CurrencyInfo.model';
 
-const CurrencyInfo: FunctionComponent<CurrencyInfoI> = memo(
+const CurrencyInfo: FunctionComponent<CurrencyInfoProps> = memo(
   ({
     onCurrencySwap,
     exchangerCurrency,

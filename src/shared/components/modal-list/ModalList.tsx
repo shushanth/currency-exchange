@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo } from 'react';
 
-import { ModelListPropsI } from './ModalList.model';
+import { ModelListProps } from './ModalList.model';
 import {
   ModelListContainerStyled,
   ModalListItemsContainerStyled,
@@ -10,7 +10,7 @@ import {
 import { uuid } from '../../../utils';
 
 //TODO: Add listItem types
-const ModalList: FunctionComponent<ModelListPropsI> = memo(
+const ModalList: FunctionComponent<ModelListProps> = memo(
   ({
     name = 'modal',
     showModal = false,

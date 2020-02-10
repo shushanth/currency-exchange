@@ -3,16 +3,16 @@
  * @propsType ArrowProps
  */
 import React, { FunctionComponent, memo } from 'react';
-import { ArrowPropsI } from './Arrow.model';
+import { ArrowProps } from './Arrow.model';
 
 import {
   ArrowContainerStyled,
   ArrowMediumDownStyled,
   ArrowSmallDownStyled,
   ArrowSmallUpStyled,
-} from './arrow.styled';
+} from './Arrow.styled';
 
-const Arrow: FunctionComponent<ArrowPropsI> = memo(
+const Arrow: FunctionComponent<ArrowProps> = memo(
   ({ size = 'medium', mode = 'down' }): JSX.Element => {
     return (
       <ArrowContainerStyled>

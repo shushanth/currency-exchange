@@ -1,15 +1,15 @@
 import { isArrayEmpty } from '../../utils';
-import { currencyListStateI } from './currencyExchangeReducer.model';
+import { currencyListState } from './currencyExchangeReducer.model';
 
 const mapCurrenciesWithPrice = (
-  currencyLists: currencyListStateI[],
+  currencyLists: currencyListState[],
   rates: { [key: string]: string },
-): currencyListStateI[] => {
+): currencyListState[] => {
   if (isArrayEmpty(currencyLists)) {
     return [];
   }
   const priceCurrencyLists = currencyLists.map(
-    (currency: currencyListStateI) => {
+    (currency: currencyListState) => {
       const rate = Number(rates[currency.name]).toFixed(2);
       currency.price = rate;
       return currency;
@@ -19,7 +19,7 @@ const mapCurrenciesWithPrice = (
 };
 
 const initiateCurrencies = (currencyConfig: { [key: string]: string }) => {
-  let updatedCurrenciesLists: currencyListStateI[] = [];
+  let updatedCurrenciesLists: currencyListState[] = [];
   const currencyConfigKeys = Object.keys(currencyConfig);
   currencyConfigKeys.map((currencyKey: string) =>
     updatedCurrenciesLists.push({
@@ -32,14 +32,14 @@ const initiateCurrencies = (currencyConfig: { [key: string]: string }) => {
 };
 
 const getRealCurrencyPrice = (
-  currencyList: currencyListStateI[],
+  currencyList: currencyListState[],
   currencyRequired: string,
 ): string | any => {
   if (isArrayEmpty(currencyList)) {
     return '';
   }
   const currencyPriceInList = currencyList.filter(
-    (currency: currencyListStateI) => {
+    (currency: currencyListState) => {
       return currency.name === currencyRequired;
     },
   );
@@ -47,7 +47,7 @@ const getRealCurrencyPrice = (
 };
 
 const getExchangerPriceWithFormat = (
-  currencyList: currencyListStateI[],
+  currencyList: currencyListState[],
   currencyRequired: string,
   exchangerAmt: number,
 ): number => {
@@ -65,7 +65,7 @@ const getExchangerPriceWithFormat = (
 };
 
 const getExchangedPriceWithFormat = (
-  currencyList: currencyListStateI[],
+  currencyList: currencyListState[],
   exchangerCurrency: string,
   exchangedCurrency: string,
   exchangedAmt: number,
@@ -74,10 +74,10 @@ const getExchangedPriceWithFormat = (
     return 0;
   }
   const exchangerCurrencyRate: any = currencyList.filter(
-    (currency: currencyListStateI) => currency.name === exchangerCurrency,
+    (currency: currencyListState) => currency.name === exchangerCurrency,
   )[0];
   const exchangedCurrencyPrice: any = currencyList.filter(
-    (currency: currencyListStateI) => currency.name === exchangedCurrency,
+    (currency: currencyListState) => currency.name === exchangedCurrency,
   )[0];
   const updatedCurrencyExchangerRate =
     (exchangerCurrencyRate.price * exchangedAmt) / exchangedCurrencyPrice.price;

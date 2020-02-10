@@ -1,14 +1,14 @@
 import React, { FunctionComponent, memo } from 'react';
 
 import { CEInput, CEDropdownButton } from '../../shared/components';
-import { ExchangerPropsI } from './currencyExchanger.model';
+import { ExchangerProps } from './CurrencyExchanger.model';
 import {
   ExchangerContainerStyled,
   ExchangerCurrencyContainerStyled,
   ExchangerAmtContainerStyled,
-} from './currencyExchanger.styled';
+} from './CurrencyExchanger.styled';
 
-const CurrencyExchanger: FunctionComponent<ExchangerPropsI> = memo(
+const CurrencyExchanger: FunctionComponent<ExchangerProps> = memo(
   ({
     exchangerCurrency,
     exchangerAmount,

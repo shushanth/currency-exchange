@@ -1,3 +1,4 @@
-interface CurrencyExchangePropsI {}
+interface CurrencyExchangeProps {}
+type currencyExchangeModel = 'EXCHANGER' | 'EXCHANGED';
 
-export { CurrencyExchangePropsI };
+export { CurrencyExchangeProps, currencyExchangeModel };

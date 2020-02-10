@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, memo } from 'react';
 
-import { SwapbuttonStyled } from './swapButton.styled';
-import { SwapbuttonPropsI } from './SwapButton.model';
+import { SwapbuttonStyled } from './SwapButton.styled';
+import { SwapbuttonProps } from './SwapButton.model';
 
 //TODO: below unicode string are used, as not . replace the same with icons.
-const Swapbutton: FunctionComponent<SwapbuttonPropsI> = memo(
+const Swapbutton: FunctionComponent<SwapbuttonProps> = memo(
   ({ onSwapInvoke }) => {
     const [swapState, setSwapState] = useState(false);
     const onSwapInvokeState = () => {
