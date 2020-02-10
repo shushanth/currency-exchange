@@ -38,7 +38,6 @@ export const changeOfExchangedCurrency = ({ payload }) => ({
   payload,
 });
 
-export const swapOfCurrency = ({ payload }) => ({
+export const swapOfCurrency = () => ({
   type: SWAP_CURRENCIES,
-  payload,
 });

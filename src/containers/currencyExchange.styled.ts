@@ -1,14 +1,17 @@
 import styled from 'styled-components';
+import colors from '../shared/styles-utils/colorPallets';
+
+const { blueScale } = colors;
 
 const CurrencyExchangeContainerStyled = styled.div`
+  border: 1px solid ${blueScale.lowOcean};
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 400px;
   height: 400px;
   margin: 40px auto;
-  border-radius: 5px;
-  border: 1px solid #194c7f6b;
   overflow: hidden;
+  width: 400px;
 `;
 
 const CurrencyInfoContainerStyled = styled.div`
@@ -22,18 +25,13 @@ const ExchangeBtnContainerStyled = styled.div`
   margin: 20px;
 `;
 
-// move to seprate component
-const CurrencyConvertStyled = styled.div``;
 const CurrencyExchangerContainerStyled = styled.div``;
-const CurrencyConvertContainerStyled = styled.div``;
 const CurrencyExchangedContainerStyled = styled.div``;
 
 export {
   CurrencyExchangedContainerStyled,
   CurrencyExchangerContainerStyled,
-  CurrencyConvertStyled,
   CurrencyExchangeContainerStyled,
-  CurrencyConvertContainerStyled,
   CurrencyInfoContainerStyled,
   ExchangeBtnContainerStyled,
 };

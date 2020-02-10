@@ -1,33 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans&display=swap');
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  vertical-align: baseline;
+  padding: 0;
   position: relative;
+  vertical-align: baseline;
 }
 
 html {
+  font-family: 'Muli', sans-serif;
+  font-size: 20px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  font-family: 'Muli', sans-serif;
-  font-size: 20px;
   -webkit-font-smoothing: smooth;
 }
 body {
-  line-height: 1;
   background-color: #fff;
+  line-height: 1;
 }
 
 input {
-  -webkit-appearance: none;
-  outline: none;
   background: inherit;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 a,
 button {
   cursor: pointer;
   -webkit-appearance: none;
+  -moz-appearance: none;
 }

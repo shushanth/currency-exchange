@@ -25,6 +25,14 @@ const rootInitialState: rootState = {
   currenciesList: [],
 };
 
+const {
+  mapCurrenciesWithPrice,
+  getRealCurrencyPrice,
+  initiateCurrencies,
+  getExchangerPriceWithFormat,
+  getExchangedPriceWithFormat,
+} = reducerHelpers;
+
 const currencyExchangeReducer = (
   state = rootInitialState,
   { type, payload }: rootAction,
@@ -33,11 +41,11 @@ const currencyExchangeReducer = (
     case FETCH_CURRENCIES_RATES:
       const { timestamp, rates } = payload;
       const { currenciesList } = state;
-      const updatedCurrenciesWithPrices = reducerHelpers.mapCurrenciesWithPrice(
+      const updatedCurrenciesWithPrices = mapCurrenciesWithPrice(
         currenciesList,
         rates,
       );
-      const exchangedUpdatedRealRate = reducerHelpers.getRealCurrencyPrice(
+      const exchangedUpdatedRealRate = getRealCurrencyPrice(
         updatedCurrenciesWithPrices,
         state.exchangedCurrency,
       );
@@ -49,7 +57,7 @@ const currencyExchangeReducer = (
       };
 
     case FETCH_CURRENCIES:
-      let updatedCurrencies: Array<currencyListState> = reducerHelpers.initiateCurrencies(
+      let updatedCurrencies: Array<currencyListState> = initiateCurrencies(
         payload,
       );
       return {
@@ -57,7 +65,7 @@ const currencyExchangeReducer = (
         currenciesList: updatedCurrencies,
       };
     case CHANGE_EXCHANGER_RATES:
-      const exchangedUpdatedCurrencyPrice: number = reducerHelpers.getExchangerPriceWithFormat(
+      const exchangedUpdatedCurrencyPrice: number = getExchangerPriceWithFormat(
         state.currenciesList,
         state.exchangedCurrency,
         payload.amount,
@@ -69,7 +77,7 @@ const currencyExchangeReducer = (
       };
 
     case CHANGE_EXCHANGED_RATES:
-      const currencyExchangedAmount = reducerHelpers.getExchangedPriceWithFormat(
+      const currencyExchangedAmount = getExchangedPriceWithFormat(
         state.currenciesList,
         state.exchangerCurrency,
         state.exchangedCurrency,

@@ -125,9 +125,9 @@ const CurrencyExchange: FunctionComponent<CurrencyExchangeProps> = (): JSX.Eleme
     }
   };
 
-  const onCurrenciesSwap = (swapState: Boolean) => {
+  const onCurrenciesSwap = () => {
     associateCurrenciesWithRates(exchangedCurrency);
-    dispatch(swapOfCurrency({ payload: { swappedCurrency: swapState } }));
+    dispatch(swapOfCurrency());
   };
 
   return (

@@ -1,22 +1,25 @@
 import styled from 'styled-components';
+import colors from '../../styles-utils/colorPallets';
+
+const { blueScale } = colors;
 
 const ButtonContainerStyled = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
   background-color: ${(props: { level: string }) =>
-    props.level === 'primary' ? '#194c7f' : 'inherit'};
+    props.level === 'primary' ? `${blueScale.dark}` : 'inherit'};
+  display: flex;
+  height: 100%;
+  width: 100%;
 `;
 
 const ButtonStyled = styled.button`
   background: inherit;
-  outline: none;
-  padding: 15px;
-  color: #fff;
+  color: ${colors.white};
   font-size: 18px;
-  width: 100%;
   height: 100%;
   letter-spacing: 0.1em;
+  outline: none;
+  padding: 15px;
+  width: 100%;
 `;
 
 export { ButtonContainerStyled, ButtonStyled };

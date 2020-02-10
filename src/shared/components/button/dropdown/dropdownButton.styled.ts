@@ -1,15 +1,18 @@
 import styled from 'styled-components';
+import colors from '../../../styles-utils/colorPallets';
+
+const { blueScale } = colors;
 
 const DropdownBtnContainerStyled = styled.button`
-  border: 1px solid #194c7f;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #194c7f;
-  color: snow;
+  background-color: ${blueScale.dark};
+  border: 1px solid ${blueScale.dark};
+  color: ${colors.white};
   cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
   outline: none;
 `;
 

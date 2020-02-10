@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import colors from '../../styles-utils/colorPallets';
+
+const { blueScale } = colors;
 
 const InputContainerStyled = styled.div`
   display: flex;
@@ -14,26 +17,27 @@ const InputContainerStyled = styled.div`
 `;
 
 const InputElementStyled = styled.input`
-  width: 100;
-  font-size: 25px;
   border: 1px solid gray;
   border-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-color: ${blueScale.dark};
+  color: ${blueScale.dark};
   padding: 15px 5px;
-  color: #194c7f;
-  border-color: #194c7f;
+  font-size: 25px;
+  width: 100;
+
   &:focus {
     outline: none;
   }
   ::-webkit-input-placeholder {
-    color: #194c7f;
+    color: ${blueScale.dark};
   }
   :ms-input-placeholder {
-    color: #194c7f;
+    color: ${blueScale.dark};
   }
   ::placeholder {
-    color: #194c7f;
+    color: ${blueScale.dark};
   }
 `;
 
