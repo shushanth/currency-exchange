@@ -19,9 +19,7 @@ const CurrencyInfo: FunctionComponent<CurrencyInfoProps> = memo(
       <Fragment>
         <CurrencyExchangeLineStyled></CurrencyExchangeLineStyled>
         <CurrencySwapStyled>
-          <CESwapButton
-            onSwapInvoke={swapState => onCurrencySwap(swapState)}
-          ></CESwapButton>
+          <CESwapButton onSwapInvoke={() => onCurrencySwap()}></CESwapButton>
         </CurrencySwapStyled>
         {exchangedRate && (
           <CurrencyInfoStyled>
