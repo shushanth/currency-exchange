@@ -15,7 +15,7 @@ module.exports = {
     compress: true,
     contentBase: path.join(__dirname, 'dist'),
   },
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   module: {
     rules: [
       {
