@@ -2,7 +2,7 @@
   "name": "currency-exchanger",
   "version": "1.0.0",
   "description": "currency exchanger widget",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "start": "webpack-dev-server --mode=development --open",
     "build": "webpack --mode=production",
@@ -11,7 +11,12 @@
     "test:coverage": "jest --coverage",
     "test:debug": "jest --debug"
   },
+  "private": false,
   "author": "shushanth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shushanth/currency-exchange.git"
+  },
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.8.4",
