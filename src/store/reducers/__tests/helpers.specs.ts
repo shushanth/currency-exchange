@@ -18,7 +18,7 @@ describe('reducerHelpers', () => {
       ALL: 121.891353,
     };
   });
-  test('method: mapCurrenciesWithPrice, with empty rates and currencyList it should return empty array', () => {
+  test('method: mapCurrenciesWithPrice, it should return empty array with empty rates and currencyList ', () => {
     let emptyMapCurrencies = reducerHelpers.mapCurrenciesWithPrice(
       currencyEmptyLists,
       ratesEmpty,
@@ -44,12 +44,12 @@ describe('reducerHelpers', () => {
     expect(priceMappedWithList[2].price).toEqual(ALLPriceFormat);
   });
 
-  test('method: initiateCurrencies, should return empty array when rates config object is empty', () => {
+  test('method: initiateCurrencies, it should return empty array when rates config object is empty', () => {
     let emptyInitialCurrencies = reducerHelpers.initiateCurrencies(ratesEmpty);
     expect(emptyInitialCurrencies.length).toBe(0);
   });
 
-  test('method: initiateCurrencies, should return list with prices as empty with rates configuration', () => {
+  test('method: initiateCurrencies, it should return list with prices as empty with rates configuration', () => {
     let initialCurrencies = reducerHelpers.initiateCurrencies(rates);
     let ratesKeyLength = Object.keys(rates).length;
     expect(initialCurrencies.length).not.toBe(0);
@@ -59,12 +59,12 @@ describe('reducerHelpers', () => {
     expect(initialCurrencies[2].price).toBe('');
   });
 
-  test('method: getExchangerPriceWithFormat, should return 0 when passed currencies list is empty', () => {
+  test('method: getExchangerPriceWithFormat, it should return 0 when passed currencies list is empty', () => {
     let exchangerPrice = reducerHelpers.getExchangerPriceWithFormat([], '', 0);
     expect(exchangerPrice).toBe(0);
   });
 
-  test('method: getExchangerPriceWithFormat, should return price with proper two decimal digits format', () => {
+  test('method: getExchangerPriceWithFormat, it hould return price with proper two decimal digits format', () => {
     let currenciesPricesList = [
       { name: 'AFN', fullName: 'Afghan Afghani', price: '84.095994' },
     ];
@@ -79,7 +79,7 @@ describe('reducerHelpers', () => {
     expect(exchangerPriceWithFormat).toEqual(resultPrice);
   });
 
-  test('method: getExchangerPriceWithFormat, should return price with proper two decimal digits format', () => {
+  test('method: getExchangerPriceWithFormat, it should return price with proper two decimal digits format', () => {
     let currenciesPricesList = [
       {
         name: 'AED',
@@ -98,7 +98,7 @@ describe('reducerHelpers', () => {
     expect(exchangerPriceWithFormat).toEqual(resultPrice);
   });
 
-  test('method:getExchangedPriceWithFormat, should return price 0 when passed currencies list is empty', () => {
+  test('method:getExchangedPriceWithFormat, it should return price 0 when passed currencies list is empty', () => {
     let exchangedPrice = reducerHelpers.getExchangedPriceWithFormat(
       [],
       '',
@@ -108,7 +108,7 @@ describe('reducerHelpers', () => {
     expect(exchangedPrice).toBe(0);
   });
 
-  test('method:getExchangedPriceWithFormat should return price with prop two decimal digits format', () => {
+  test('method:getExchangedPriceWithFormat it should return price with prop two decimal digits format', () => {
     let currenciesPricesList = [
       {
         name: 'USD',

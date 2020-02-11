@@ -5,7 +5,6 @@ interface currencyListState {
 }
 
 interface rootState {
-  timestamp: string;
   exchangerAmount: number;
   exchangedAmount: number;
   exchangedRealRate: string;

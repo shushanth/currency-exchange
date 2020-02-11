@@ -16,7 +16,6 @@ import {
 } from './currencyExchangeReducer.model';
 
 const rootInitialState: rootState = {
-  timestamp: '',
   exchangerCurrency: 'EUR',
   exchangedCurrency: 'USD',
   exchangerAmount: 0,
@@ -38,8 +37,17 @@ const currencyExchangeReducer = (
   { type, payload }: rootAction,
 ): rootState => {
   switch (type) {
+    case FETCH_CURRENCIES:
+      let updatedCurrencies: Array<currencyListState> = initiateCurrencies(
+        payload,
+      );
+      return {
+        ...state,
+        currenciesList: updatedCurrencies,
+      };
+
     case FETCH_CURRENCIES_RATES:
-      const { timestamp, rates } = payload;
+      const { rates } = payload;
       const { currenciesList } = state;
       const updatedCurrenciesWithPrices = mapCurrenciesWithPrice(
         currenciesList,
@@ -51,18 +59,8 @@ const currencyExchangeReducer = (
       );
       return {
         ...state,
-        timestamp,
         currenciesList: updatedCurrenciesWithPrices,
         exchangedRealRate: exchangedUpdatedRealRate,
-      };
-
-    case FETCH_CURRENCIES:
-      let updatedCurrencies: Array<currencyListState> = initiateCurrencies(
-        payload,
-      );
-      return {
-        ...state,
-        currenciesList: updatedCurrencies,
       };
     case CHANGE_EXCHANGER_RATES:
       const exchangedUpdatedCurrencyPrice: number = getExchangerPriceWithFormat(
@@ -77,6 +75,7 @@ const currencyExchangeReducer = (
       };
 
     case CHANGE_EXCHANGED_RATES:
+      debugger;
       const currencyExchangedAmount = getExchangedPriceWithFormat(
         state.currenciesList,
         state.exchangerCurrency,
