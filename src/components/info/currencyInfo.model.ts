@@ -1,5 +1,5 @@
 interface CurrencyInfoProps {
-  onCurrencySwap: (swapState: boolean) => void;
+  onCurrencySwap: () => void;
   exchangerCurrency: string | any;
   exchangedCurrency: string | any;
   exchangedRate: string;
