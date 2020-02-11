@@ -75,7 +75,6 @@ const currencyExchangeReducer = (
       };
 
     case CHANGE_EXCHANGED_RATES:
-      debugger;
       const currencyExchangedAmount = getExchangedPriceWithFormat(
         state.currenciesList,
         state.exchangerCurrency,
